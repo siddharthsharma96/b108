@@ -1,0 +1,112 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.gridContainer {
+  height: 90vh;
+  border: 2px solid red;
+  display: grid;
+  /* grid-template-columns: 200px 100px 300px; */
+  /* grid-template-columns: 200px 200px 200px 200px; */
+  /* grid-template-columns: repeat(3, 200px); */
+  /* grid-template-columns: 1fr 1fr 1fr 1fr; */
+  /* grid-template-rows: 100px 100px; */
+  /* grid-template-rows: 1fr 1fr 1fr; */
+  grid-template: repeat(4, 1fr) / repeat(4, 1fr);
+  /* gap: 10px; */
+  /* row-gap: 20px;
+  column-gap: 30px; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* align-content: center; */
+}
+
+.gridItem {
+  /* padding: 0px; */
+  color: red;
+  background-color: yellow;
+  font-size: 28px;
+  font-weight: 700;
+  border: 1px solid red;
+}
+.gridItem:nth-child(1) {
+  /* grid-column-start: 1;
+  grid-column-end: -1; */
+  grid-column: 1/-2;
+  /* grid-row-start: 2;
+  grid-row-end: 3; */
+  grid-row: 3/4;
+}
+
+.layout {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 50px 1fr 50px;
+  grid-template-areas: "header header header" "nav main aside" "footer footer footer";
+}
+header {
+  grid-area: header;
+  background-color: red;
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  /* grid-column: 1/-1; */
+}
+nav {
+  grid-area: nav;
+  background-color: blue;
+  font-weight: 700;
+}
+main {
+  grid-area: main;
+  background-color: green;
+  font-weight: 700;
+  color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+aside {
+  grid-area: aside;
+  background-color: purple;
+  color: white;
+  font-weight: 700;
+}
+footer {
+  grid-area: footer;
+  background-color: black;
+  color: white;
+  text-align: center;
+  /* grid-column: 1/-1; */
+}
+
+/* 
+less than 576px : mobile
+577px-768 tabs
+769px-992px small screens
+993-1200px normal screens
+*/
+
+@media (min-width: 992px) {
+  header {
+    background-color: pink;
+  }
+}
+
+@media (min-width: 678px) and (max-width: 992px) {
+  .layout {
+    grid-template-columns: 3fr 1fr;
+    /* grid-template-rows: 50px 1fr 50px; */
+    grid-template-areas: " header header" " main aside" " footer footer";
+  }
+  header {
+    color: yellow;
+    font-size: 34px;
+  }
+  nav {
+    display: none;
+  }
+}
